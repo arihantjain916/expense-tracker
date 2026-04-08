@@ -1,8 +1,6 @@
-import fs from "fs";
-import path from "path";
+
 import { Expense } from "./types";
 
-const filePath = path.join(process.cwd(), "data", "expenses.json");
 
 let expenses: Expense[] = [
   {

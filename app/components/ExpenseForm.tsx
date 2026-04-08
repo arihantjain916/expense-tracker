@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { addExpenseAction } from "../action";
 
@@ -21,10 +21,14 @@ function SubmitButton() {
 
 export default function ExpenseForm() {
   const ref = useRef<HTMLFormElement>(null);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(formData: FormData) {
     await addExpenseAction(formData);
     ref.current?.reset();
+    setSuccess(true);
+    setTimeout(() => setSuccess(false), 2000);
   }
 
   return (
@@ -50,6 +54,14 @@ export default function ExpenseForm() {
         className="w-full border rounded-lg p-2"
       />
       <SubmitButton />
+
+      {success && (
+        <p className="text-green-600 text-sm text-center animate-pulse">
+          ✅ Expense added successfully!
+        </p>
+      )}
+
+      {error && <p className="text-red-500 text-sm text-center">❌ {error}</p>}
     </form>
   );
 }
