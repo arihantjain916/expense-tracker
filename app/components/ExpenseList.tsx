@@ -1,7 +1,7 @@
 "use client";
 
 import { Expense } from "@/lib/types";
-import { deleteExpense } from "../action";
+import { deleteExpenseAction } from "../action";
 import moment from "moment";
 
 export default function ExpenseList({ expenses }: { expenses: Expense[] }) {
@@ -30,7 +30,7 @@ export default function ExpenseList({ expenses }: { expenses: Expense[] }) {
                 ₹{expense.amount.toFixed(2)}
               </span>
               <button
-                onClick={() => deleteExpense(expense.id)}
+                onClick={() => deleteExpenseAction(expense.id)}
                 className="text-red-400 hover:text-red-600 text-sm"
               >
                 Delete

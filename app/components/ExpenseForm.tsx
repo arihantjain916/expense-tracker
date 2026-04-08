@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useFormStatus } from "react-dom";
-import { addExpense } from "../action";
+import { addExpenseAction } from "../action";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -23,7 +23,7 @@ export default function ExpenseForm() {
   const ref = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(formData: FormData) {
-    await addExpense(formData);
+    await addExpenseAction(formData);
     ref.current?.reset();
   }
 
