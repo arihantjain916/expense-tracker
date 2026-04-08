@@ -11,7 +11,7 @@ export default function Home() {
 
       <div className="bg-blue-50 rounded-xl p-4 mb-6">
         <p className="text-sm text-gray-500">Total Expenses</p>
-        <p className="text-3xl font-bold text-blue-600">${total.toFixed(2)}</p>
+        <p className="text-3xl font-bold text-blue-600">₹{total.toFixed(2)}</p>
       </div>
 
       <ExpenseForm />
